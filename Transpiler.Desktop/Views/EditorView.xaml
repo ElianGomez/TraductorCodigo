@@ -1,0 +1,10 @@
+﻿<UserControl x:Class="Transpiler.Desktop.Views.EditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+             xmlns:helpers="clr-namespace:Transpiler.Desktop.Helpers">
+    <avalonEdit:TextEditor FontFamily="Consolas"
+                           FontSize="14"
+                           ShowLineNumbers="True"
+                           helpers:AvalonEditBinding.BoundText="{Binding SourceCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+</UserControl>

@@ -1,0 +1,53 @@
+﻿<Window x:Class="Transpiler.Desktop.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Transpiler.Desktop.Views"
+        mc:Ignorable="d"
+        Title="Traductor de Código" Height="720" Width="1200">
+
+    <!-- Usamos DialogHost dentro del Window -->
+    <materialDesign:DialogHost>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="28"/>
+            </Grid.RowDefinitions>
+
+            <!-- Barra superior -->
+            <DockPanel Grid.Row="0" Margin="8">
+                <ComboBox Width="160" ItemsSource="{Binding SourceLangs}" SelectedItem="{Binding SourceLang}" Margin="0,0,8,0"/>
+                <ComboBox Width="160" ItemsSource="{Binding TargetLangs}" SelectedItem="{Binding TargetLang}"/>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+                    <Button Content="Abrir"   Command="{Binding OpenFileCommand}"   Margin="8,0"/>
+                    <Button Content="Guardar" Command="{Binding SaveFileCommand}"   Margin="8,0"/>
+                    <Button Content="Traducir"   Command="{Binding TranspileCommand}"   Margin="8,0"/>
+                </StackPanel>
+            </DockPanel>
+
+            <!-- Cuerpo -->
+            <Grid Grid.Row="1" Margin="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border CornerRadius="12" materialDesign:ElevationAssist.Elevation="Dp4" Padding="4">
+                    <local:EditorView/>
+                </Border>
+
+                <Border Grid.Column="1" CornerRadius="12" materialDesign:ElevationAssist.Elevation="Dp4" Padding="4">
+                    <local:OutputView/>
+                </Border>
+            </Grid>
+
+            <!-- Status -->
+            <DockPanel Grid.Row="2" Margin="8,0">
+                <TextBlock Text="{Binding Status}"/>
+            </DockPanel>
+        </Grid>
+    </materialDesign:DialogHost>
+</Window>
