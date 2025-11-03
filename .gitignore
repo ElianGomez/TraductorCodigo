@@ -1,0 +1,12 @@
+# Visual Studio files
+.vs/
+*.vsidx
+
+# Build output
+bin/
+obj/
+
+# Otros (OneDrive, temp, backup)
+*.tmp
+*.bak
+*.log
